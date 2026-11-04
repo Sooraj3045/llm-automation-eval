@@ -42,8 +42,3 @@ The evaluation pipeline assesses chatbot responses using two primary metrics:
 *Note: Actual scores and evaluation results depend on the LLM judge and the chatbot response. No fixed evaluation scores are assumed.*
 
 ---
-
-<<<<<<< HEAD
-=======
-**Project Focus:** Automated LLM Evaluation | AI Chatbot Testing | Web Automation | Quality Assurance
->>>>>>> 9439e46 (Updated DeepEval integration, chatbot pipeline and README)
