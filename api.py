@@ -1,6 +1,8 @@
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from pydantic import BaseModel
+
+from database import create_table, save_chat, get_all_chats
 
 app = FastAPI(
     title="BiteSpeed Support API",
@@ -15,6 +17,11 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     response: str
+
+
+@app.on_event("startup")
+def startup():
+    create_table()
 
 
 @app.get("/")
@@ -45,4 +52,11 @@ def chat(request: ChatRequest):
             "Please contact customer support."
         )
 
+    save_chat(request.message, response)
+
     return {"response": response}
+
+
+@app.get("/history")
+def chat_history():
+    return {"chats": get_all_chats()}
